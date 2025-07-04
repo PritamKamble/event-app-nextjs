@@ -70,7 +70,7 @@ useEffect(() => setMounted(true), []);
               <Image
                 src={slides[current].src}
                 alt={`Slide ${current + 1}`}
-                className="w-full h-[400px] object-cover transition-all duration-700 ease-in-out rounded-tl-4xl"
+                className="w-full h-[400px] object-cover transition-all duration-700 ease-in-out rounded-tl-4xl p-2"
                 width={1920}
                 height={400}
                 priority
