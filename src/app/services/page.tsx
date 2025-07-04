@@ -1,70 +1,122 @@
+// app/services/page.tsx or wherever Servicepage is
+
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import {
+  FaBriefcase,
+  FaBirthdayCake,
+  FaBaby,
+  FaRing,
+  FaHome,
+  FaBuilding,
+  FaHandsHelping,
+  FaStar,
+} from "react-icons/fa";
+import EventCategoryCard from "../component/EventCategoryGrid";
 
 const services = [
   {
-    title: "Birthday Decorations",
-    image: "/gallery/bday2.jpeg",
-    description: "Celebrate your special day with colorful and personalized birthday decorations.",
+    title: "Corporate Events",
+    slug: "corporate-events",
+    description:
+      "Corporate events in India bring people together to build businesses, celebrate achievements, and create meaningful connections.",
+    icon: (
+      <img
+        src="/icon/business-success.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
   },
   {
-    title: "Anniversary Decorations",
-    image: "/gallery/anvrsry.jpg",
-    description: "Elegant and romantic decor to mark your special milestones together.",
+    title: "Birthday & Anniversaries Events",
+    slug: "birthday-anniversary",
+    description:
+      "Celebrate life's milestones with elegant and joyful birthday and anniversary decorations.",
+    icon: (
+      <img
+        src="/icon/birthday-cake.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
   },
   {
-    title: "Baby Shower",
-    image: "/gallery/babyShower.jpeg",
-    description: "Adorable and themed setups to welcome your little one.",
+    title: "Baby & Kids Celebrations",
+    slug: "baby-kids",
+    description:
+      "Make every baby and kid's moment extra special with colorful and fun setups.",
+    icon: (
+      <img
+        src="/icon/baby-shower.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
   },
   {
-    title: "Proposal Setup",
-    image: "/gallery/proposal.jpeg",
-    description: "Make your proposal unforgettable with a dreamy setup and romantic ambiance.",
+    title: "Wedding & Pre-Wedding",
+    slug: "wedding-prewedding",
+    description:
+      "From proposals to mehendi and haldi, we create romantic and vibrant wedding vibes.",
+    icon: (
+      <img
+        src="/icon/marriage.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
   },
   {
-    title: "First Birthday Theme",
-    image: "/services/firstbday.jpg",
-    description: "Cute and themed decor to celebrate your baby's first big milestone!",
+    title: "Home Ceremonies",
+    slug: "home-ceremonies",
+    description:
+      "Celebrate griha pravesh and spiritual gatherings with warm, elegant home decor.",
+    icon: (
+      <img
+        src="/icon/wedding-decoration.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
   },
   {
-    title: "Theme Decorations",
-    image: "/services/firstbday.jpg",
-    description: "Cute and themed decor to celebrate your baby's first big milestone!",
+    title: "Business Launches",
+    slug: "business-launches",
+    description:
+      "Make your business events memorable with premium themes and setups.",
+    icon: (
+      <img
+        src="/icon/targeting.png"
+        alt="Corporate"
+        className="w-16 h-16 mx-auto"
+      />
+    ),
+  },
+  {
+    title: "Welcome & Milestones",
+    slug: "welcome-milestones",
+    description:
+      "From welcoming babies to brides, we create heartfelt, memorable entrances.",
+    icon: <FaHandsHelping className="text-7xl sm:text-8xl" />,
+  },
+  {
+    title: "Others / Custom Events",
+    slug: "custom-events",
+    description:
+      "No matter the theme, we customize decor to suit your imagination and occasion.",
+    icon: <FaStar className="text-7xl sm:text-8xl" />,
   },
 ];
 
 export default function Servicepage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12  bg-gray-50">
-      <h1 className="text-4xl font-bold text-center text-indigo-700 mb-10">
-        Our Services
+    <div className="max-w-7xl mx-auto px-4 py-12 bg-transparent">
+      <h1 className="text-3xl font-light text-center text-[#d1b12b] mb-7">
+        Comprehensive Event Services
       </h1>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition"
-          >
-            <Image
-              src={service.image}
-              alt={service.title}
-              width={300}
-              height={450}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                {service.title}
-              </h2>
-              <p className="text-sm text-gray-600">{service.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <EventCategoryCard services={services} />
     </div>
   );
 }
