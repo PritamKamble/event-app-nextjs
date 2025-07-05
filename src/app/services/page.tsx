@@ -15,12 +15,12 @@ import {
 } from "react-icons/fa";
 import EventCategoryCard from "../component/EventCategoryGrid";
 
-
 const services = [
   {
     title: "Birthday",
     slug: "birthday",
-    description: "Celebrate life's milestones with joyful and creative birthday decorations.",
+    description:
+      "Celebrate life's milestones with joyful and creative birthday decorations.",
     icon: (
       <img
         src="/icon/birthday-cake.png"
@@ -32,7 +32,8 @@ const services = [
   {
     title: "Baby Shower",
     slug: "baby-shower",
-    description: "Make every baby shower special with delightful and colorful themes.",
+    description:
+      "Make every baby shower special with delightful and colorful themes.",
     icon: (
       <img
         src="/icon/baby-shower.png"
@@ -44,7 +45,8 @@ const services = [
   {
     title: "Anniversary",
     slug: "anniversary",
-    description: "Celebrate anniversaries with elegant and romantic decor setups.",
+    description:
+      "Celebrate anniversaries with elegant and romantic decor setups.",
     icon: (
       <img
         src="/icon/marriage.png"
@@ -53,22 +55,11 @@ const services = [
       />
     ),
   },
-   {
-    title: "Haldi Decor",
-    slug: "haldi-decor",
-    description: "Traditional haldi ceremonies enhanced with festive colors and decor.",
-    icon: (
-      <img
-        src="/icon/marriage.png"
-        alt="Haldi Decor"
-        className="w-16 h-16 mx-auto"
-      />
-    ),
-  },
   {
     title: "Naming Ceremony",
     slug: "naming-ceremony",
-    description: "Create heartwarming setups for your baby's naming day celebration.",
+    description:
+      "Create heartwarming setups for your baby's naming day celebration.",
     icon: (
       <img
         src="/icon/naming.png"
@@ -80,7 +71,8 @@ const services = [
   {
     title: "Corporate Events",
     slug: "corporate-events",
-    description: "Professional decor for business events, launches, and achievements.",
+    description:
+      "Professional decor for business events, launches, and achievements.",
     icon: (
       <img
         src="/icon/business-success.png"
@@ -92,10 +84,11 @@ const services = [
   {
     title: "House Warming",
     slug: "house-warming",
-    description: "Celebrate your new beginnings with elegant griha pravesh decor.",
+    description:
+      "Celebrate your new beginnings with elegant griha pravesh decor.",
     icon: (
       <img
-        src="/icon/house.png"
+        src="/icon/wedding-decoration.png"
         alt="House Warming"
         className="w-16 h-16 mx-auto"
       />
@@ -104,10 +97,11 @@ const services = [
   {
     title: "Shop Opening Decor",
     slug: "shop-opening",
-    description: "Attract attention and blessings with grand shop opening themes.",
+    description:
+      "Attract attention and blessings with grand shop opening themes.",
     icon: (
       <img
-        src="/icon/shop.png"
+        src="/icon/targeting.png"
         alt="Shop Opening"
         className="w-16 h-16 mx-auto"
       />
@@ -116,7 +110,8 @@ const services = [
   {
     title: "Bride to Be Decor",
     slug: "bride-to-be",
-    description: "Celebrate bridal moments with charming 'Bride to Be' decorations.",
+    description:
+      "Celebrate bridal moments with charming 'Bride to Be' decorations.",
     icon: (
       <img
         src="/icon/bride.png"
@@ -137,11 +132,12 @@ const services = [
       />
     ),
   },
- 
+
   {
     title: "Mehendi Decor",
     slug: "mehendi-decor",
-    description: "Colorful mehendi functions brought to life with vibrant decor.",
+    description:
+      "Colorful mehendi functions brought to life with vibrant decor.",
     icon: (
       <img
         src="/icon/mehendi.png"
@@ -153,7 +149,8 @@ const services = [
   {
     title: "Baptism",
     slug: "baptism",
-    description: "Graceful and spiritual themes for your child’s baptism ceremony.",
+    description:
+      "Graceful and spiritual themes for your child’s baptism ceremony.",
     icon: (
       <img
         src="/icon/baptism.png"
@@ -165,19 +162,17 @@ const services = [
   {
     title: "Munj",
     slug: "munj",
-    description: "Create a sacred and respectful vibe for traditional Munj ceremonies.",
+    description:
+      "Create a sacred and respectful vibe for traditional Munj ceremonies.",
     icon: (
-      <img
-        src="/icon/ritual.png"
-        alt="Munj"
-        className="w-16 h-16 mx-auto"
-      />
+      <img src="/icon/ritual.png" alt="Munj" className="w-16 h-16 mx-auto" />
     ),
   },
   {
     title: "Baby Welcome",
     slug: "baby-welcome",
-    description: "Welcome the newborn with heartwarming and colorful decorations.",
+    description:
+      "Welcome the newborn with heartwarming and colorful decorations.",
     icon: (
       <img
         src="/icon/welcome-baby.png"
@@ -198,7 +193,7 @@ const services = [
       />
     ),
   },
- 
+
   {
     title: "Other / Custom Events",
     slug: "custom-events",
@@ -207,11 +202,9 @@ const services = [
   },
 ];
 
-
-
 export default function Servicepage() {
-  const [showAll, setShowAll] = useState(false)
-    const visibleServices = showAll ? services : services.slice(0, 8);
+  const [showAll, setShowAll] = useState(false);
+  const visibleServices = showAll ? services : services.slice(0, 8);
 
   return (
     <div className="max-w-7xl mx-auto  px-4 py-12 bg-[#fdf9f2]  ">

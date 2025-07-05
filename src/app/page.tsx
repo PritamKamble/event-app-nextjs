@@ -42,7 +42,6 @@ export default function Page() {
   }, [current]);
 
   return (
-    // <div className="relative min-h-screen  overflow-hidden bg-gradient-to-r from-[#fdfdf7] via-[#f9f5e0] to-[#fbf3d4]">
     <div className="relative min-h-screen  overflow-hidden bg-gradient">
       {/* Animated floating golden dots */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -63,51 +62,49 @@ export default function Page() {
 
       {/* Page content */}
       <div className="relative z-10 space border-b-2">
-            <div className="relative   overflow-hidden bg-gradient-to-tr from-[#FFFFFF] via-[#f9f5e0] to-[#fbf3d4]">
-
-        {/* Slider and MyStoryPage side by side (on desktop) */}
-        <div className="mt-6 flex flex-col md:flex-row gap-6 ">
-          {/* Left: Slider */}
-          <div className="w-full md:w-1/2 relative">
-            {slides[current].type === "image" ? (
-              <Image
-                src={slides[current].src}
-                alt={`Slide ${current + 1}`}
-                className="w-full h-[400px] object-cover transition-all duration-700 ease-in-out rounded-tl-4xl p-2"
-                width={1920}
-                height={400}
-                priority
-              />
-            ) : (
-              <video
-                className="w-full h-[400px] object-center"
-                src={slides[current].src}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            )}
-            {/* Slider Dots */}
-            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`w-3 h-3 rounded-full ${
-                    index === current ? "bg-white" : "bg-white/50"
-                  }`}
+        <div className="relative   overflow-hidden bg-gradient-to-tr from-[#FFFFFF] via-[#f9f5e0] to-[#fbf3d4]">
+          {/* Slider and MyStoryPage side by side (on desktop) */}
+          <div className="mt-6 flex flex-col md:flex-row gap-6 ">
+            {/* Left: Slider */}
+            <div className="w-full md:w-1/2 relative">
+              {slides[current].type === "image" ? (
+                <Image
+                  src={slides[current].src}
+                  alt={`Slide ${current + 1}`}
+                  className="w-full h-[400px] object-cover transition-all duration-700 ease-in-out rounded-tl-4xl p-2"
+                  width={1920}
+                  height={400}
+                  priority
                 />
-              ))}
+              ) : (
+                <video
+                  className="w-full h-[400px] object-center"
+                  src={slides[current].src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              )}
+              {/* Slider Dots */}
+              <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrent(index)}
+                    className={`w-3 h-3 rounded-full ${
+                      index === current ? "bg-white" : "bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right: MyStory */}
+            <div className="w-full md:w-1/2">
+              <MyStoryPage />
             </div>
           </div>
-
-          {/* Right: MyStory */}
-          <div className="w-full md:w-1/2">
-            <MyStoryPage />
-          </div>
-          
-        </div>
         </div>
         {/* <div className="w-full mt-4 mb-8">
           <Image

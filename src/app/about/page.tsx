@@ -27,13 +27,21 @@ export default function AboutPage() {
         {/* Left: Image */}
         <div className="flex gap-2">
           <div className="w-full">
-            <Image
+            <video
+              className="w-full h-[250px] sm:h-[400px] rounded  rounded-tl-4xl shadow-lg object-cover"
+              src="/slide/decovideo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            {/* <Image
               src="/slide/babyshower.jpg"
               alt="Celebration"
               width={500}
               height={350}
               className="w-full h-[250px] sm:h-[400px] rounded  rounded-tl-4xl shadow-lg object-cover"
-            />
+            /> */}
           </div>
           <div className="w-full">
             <Image
