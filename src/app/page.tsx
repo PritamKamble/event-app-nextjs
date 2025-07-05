@@ -9,13 +9,13 @@ import ReviewPage from "./review/page";
 import EventCategoryGrid from "./component/EventCategoryGrid";
 import Image from "next/image";
 import HappyCustpage from "./happycustomer/page";
-import MyStoryPage from "@/mystory/page";
+import MyStoryPage from "@/app/mystory/page";
 import Testimonialpage from "./testimonials/page";
 import Servicepage from "./services/page";
-
+import page from "images/page-end.png";
 export default function Page() {
   const [mounted, setMounted] = useState(false);
-useEffect(() => setMounted(true), []);
+  useEffect(() => setMounted(true), []);
   const slides = [
     { type: "image", src: "/slide/Book.jpg" },
     { type: "image", src: "/slide/babyshower.jpg" },
@@ -42,26 +42,29 @@ useEffect(() => setMounted(true), []);
   }, [current]);
 
   return (
-    <div className="relative min-h-screen  overflow-hidden bg-gradient-to-r from-[#fcfbf8] via-[#f5f0d5] to-[#ecdf99]">
+    // <div className="relative min-h-screen  overflow-hidden bg-gradient-to-r from-[#fdfdf7] via-[#f9f5e0] to-[#fbf3d4]">
+    <div className="relative min-h-screen  overflow-hidden bg-gradient">
       {/* Animated floating golden dots */}
       <div className="absolute inset-0 pointer-events-none z-0">
-      {mounted &&
-  [...Array(25)].map((_, i) => (
-    <div
-      key={i}
-      className="absolute w-[8px] h-[8px] bg-yellow-300 rounded-full opacity-40 animate-float"
-      style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 10}s`,
-        animationDuration: `${4 + Math.random() * 6}s`,
-      }}
-    />
-))}
+        {mounted &&
+          [...Array(25)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-[8px] h-[8px] bg-yellow-300 rounded-full opacity-40 animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${4 + Math.random() * 6}s`,
+              }}
+            />
+          ))}
       </div>
 
       {/* Page content */}
       <div className="relative z-10 space border-b-2">
+            <div className="relative   overflow-hidden bg-gradient-to-tr from-[#FFFFFF] via-[#f9f5e0] to-[#fbf3d4]">
+
         {/* Slider and MyStoryPage side by side (on desktop) */}
         <div className="mt-6 flex flex-col md:flex-row gap-6 ">
           {/* Left: Slider */}
@@ -103,14 +106,22 @@ useEffect(() => setMounted(true), []);
           <div className="w-full md:w-1/2">
             <MyStoryPage />
           </div>
+          
         </div>
-
-        {/* Event Categories */}
+        </div>
+        {/* <div className="w-full mt-4 mb-8">
+          <Image
+            src="/images/page-end.png"
+            alt="Page End Decoration"
+            width={120}
+            height={300}
+ className="w-[150px] h-[30px] object-cover rounded-md  mx-auto bg-transparent"          />
+        </div> */}
         <Servicepage />
 
         {/* Other Sections */}
         <HappyCustpage />
-        <Testimonialpage/>
+        <Testimonialpage />
         <AboutPage />
         <ContactPage />
       </div>

@@ -44,22 +44,23 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import Image from "next/image";
+import CountUp from "react-countup"; // ✅ CountUp for animation
 
 const celebrationData = [
   {
     type: "Events",
     count: 3000,
-    icon: <FaCalendarAlt size={40} className="text-pink-600 mb-3" />,
+    // icon: <FaCalendarAlt size={40} className="text-pink-600 mb-3" />,
   },
   {
     type: "Trusted Clients",
     count: 1000,
-    icon: <FaBirthdayCake size={40} className="text-yellow-500 mb-3" />,
+    // icon: <FaBirthdayCake size={40} className="text-yellow-500 mb-3" />,
   },
   {
     type: "Years of Experience",
     count: 10,
-    icon: <FaHeart size={40} className="text-red-500 mb-3" />,
+    // icon: <FaHeart size={40} className="text-red-500 mb-3" />,
   },
 ];
 
@@ -70,7 +71,7 @@ export default function HappyCustpage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
         {/* Left: Text */}
         <div className="space-y-5">
-          <h2 className="text-4xl font-light text-[#d1b12b]">
+          <h2 className="text-4xl font-semibold text-[#615b45]">
             Why Choose Us?
           </h2>
           <p className="text-gray-700 text-lg">
@@ -121,8 +122,9 @@ export default function HappyCustpage() {
             key={index}
             className="rounded-xl shadow-lg p-6 text-center bg-white hover:shadow-xl transition"
           >
+            {/* <div className="flex justify-center">{item.icon}</div> */}
             <p className="text-4xl sm:text-5xl font-light text-amber-800">
-              {item.count}+
+              <CountUp end={item.count} duration={2} />+
             </p>
             <h2 className="text-xl font-semibold text-gray-800 mt-2">
               {item.type}

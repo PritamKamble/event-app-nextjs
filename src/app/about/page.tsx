@@ -11,9 +11,11 @@ const poppins = Poppins({
 
 export default function AboutPage() {
   return (
-    <div className={`${poppins.className} w-full bg-gradient-to-b from-[#fffdf5] to-[#f0f0f5] py-16`}>
+    <div
+      className={`${poppins.className} w-full bg-gradient-to-b from-[#fffdf5] to-[#f0f0f5] py-16`}
+    >
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl font-light text-[#d1b12b] tracking-tight">
+        <h3 className="text-3xl md:text-4xl font-semibold text-[#d1b12b] tracking-tight">
           About Us
         </h3>
         <p className="text-light md:text-lg text-gray-500 mt-2">
@@ -23,14 +25,25 @@ export default function AboutPage() {
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
         {/* Left: Image */}
-        <div className="w-full">
-          <Image
-            src="/slide/babyshower.jpg"
-            alt="Celebration"
-            width={500}
-            height={350}
-            className="w-full h-[400px] rounded-2xl shadow-lg object-cover"
-          />
+        <div className="flex gap-2">
+          <div className="w-full">
+            <Image
+              src="/slide/babyshower.jpg"
+              alt="Celebration"
+              width={500}
+              height={350}
+              className="w-full h-[250px] sm:h-[400px] rounded  rounded-tl-4xl shadow-lg object-cover"
+            />
+          </div>
+          <div className="w-full">
+            <Image
+              src="/slide/babyshower.jpg"
+              alt="Celebration"
+              width={500}
+              height={350}
+              className="w-full sm:h-[300px] h-[200px] rounded rounded-br-4xl shadow-lg object-cover "
+            />
+          </div>
         </div>
 
         {/* Right: Content */}
@@ -40,9 +53,9 @@ export default function AboutPage() {
               Crafting Special Celebrations Just for You
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed text-justify mb-4">
-              We specialize in creating unforgettable event experiences — from intimate
-              gatherings to grand celebrations. Our passion lies in the details,
-              turning your vision into reality with a touch of magic.
+              We specialize in creating unforgettable event experiences — from
+              intimate gatherings to grand celebrations. Our passion lies in the
+              details, turning your vision into reality with a touch of magic.
             </p>
             <p className="text-gray-600 text-lg leading-relaxed text-justify">
               Whether it’s a birthday, wedding, baby shower, or corporate event,

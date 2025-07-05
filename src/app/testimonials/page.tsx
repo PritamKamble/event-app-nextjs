@@ -22,7 +22,7 @@ export default function Testimonialpage() {
 
   return (
     <div className="px-4 py-10 bg-gray-50">
-      <h1 className="text-3xl font-light text-center mb-10 text-[#bd9f28]">
+      <h1 className="text-3xl font-semibold text-center mb-10 text-[#bd9f28]">
         What Our Customers Say
       </h1>
 

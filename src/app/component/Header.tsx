@@ -9,7 +9,7 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dots, setDots] = useState<React.ReactElement[]>([]);
 
-  const navItems = ["Services", "About", "Gallery", "Review", "Contact"];
+  const navItems = ["Home", "Services", "About", "Gallery", "Contact"];
 
   // Safe dot generation only on client
   useEffect(() => {
@@ -46,16 +46,19 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 text-sm text-amber-700 sm:text-base">
-          {navItems.map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="hover:text-gray-800 transition"
-            >
-              {item}
-            </Link>
-          ))}
+        <nav className="hidden md:flex space-x-6 text-sm font-bold text-amber-700 sm:text-base">
+          {navItems.map((item) => {
+            const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            return (
+              <Link
+                key={item}
+                href={path}
+                className="hover:text-gray-800 transition"
+              >
+                {item}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -93,16 +96,19 @@ const Header = () => {
           </button>
 
           {/* Nav links */}
-          {navItems.map((item) => (
-            <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="block text-base text-gray-800 hover:text-amber-900 transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const path1 = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            return (
+              <Link
+                key={item}
+                href={path1}
+                className="block text-base text-gray-800 hover:text-amber-900 transition"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </header>
