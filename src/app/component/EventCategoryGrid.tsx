@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -40,9 +39,7 @@ export default function EventCategoryCard({
               <h3 className="text-lg text-[#9f9159] sm:text-xl font-semibold mb-2">
                 {service.title}
               </h3>
-              <p className="text-sm sm:text-base px-2">
-                {service.description}
-              </p>
+              <p className="text-sm sm:text-base px-2">{service.description}</p>
             </div>
           </Link>
         ))}
