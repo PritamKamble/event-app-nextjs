@@ -49,7 +49,7 @@ export default function AboutPage() {
               alt="Celebration"
               width={500}
               height={350}
-              className="w-full sm:h-[300px] h-[200px] rounded rounded-br-4xl shadow-lg object-cover "
+              className="w-full sm:h-[400px] h-[250px] rounded rounded-br-4xl shadow-lg object-cover "
             />
           </div>
         </div>

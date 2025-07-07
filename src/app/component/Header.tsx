@@ -8,11 +8,15 @@ import { Menu, X } from "lucide-react";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dots, setDots] = useState<React.ReactElement[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   const navItems = ["Home", "Services", "About", "Gallery", "Contact"];
 
   // Safe dot generation only on client
+
   useEffect(() => {
+    setIsClient(true);
+
     const newDots = [...Array(25)].map((_, i) => (
       <div
         key={i}
@@ -27,11 +31,12 @@ const Header = () => {
     ));
     setDots(newDots);
   }, []);
-
   return (
-    <header className="bg-transparent text-black top-0 z-50 w-full mt-3 bg-gradient-to-r from-[#fff] via-[#f7f4e4] to-[#ecdf99] overflow-hidden">
+    <header className="bg-transparent text-black top-0 z-50 w-full  bg-gradient-to-r from-[#fff] via-[#f7f4e4] to-[#ecdf99] overflow-hidden">
       {/* Floating dots */}
-      <div className="absolute inset-0 z-0 pointer-events-none">{dots}</div>
+      {isClient && (
+        <div className="absolute inset-0 z-0 pointer-events-none">{dots}</div>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo */}

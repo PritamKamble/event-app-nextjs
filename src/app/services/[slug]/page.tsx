@@ -109,7 +109,7 @@ export default function EventDetailPage() {
               alt={event.title}
               width={600}
               height={400}
-              className=" h-[300px] sm:h-[400px] object-cover transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110 group-hover:rotate-[1deg]"
+              className=" h-[300px] sm:h-[410px] object-fit transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110 group-hover:rotate-[1deg]"
             />
           </div>
         </div>

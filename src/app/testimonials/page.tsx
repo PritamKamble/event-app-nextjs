@@ -8,6 +8,7 @@ export default function Testimonialpage() {
     "/videos/testimonial-v.mp4",
     "/videos/testimonial-v2.mp4",
     "/videos/testimonial-v3.mp4",
+    "/videos/testimonial-v.mp4",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,14 +41,14 @@ export default function Testimonialpage() {
         <div className="mt-4 flex justify-center gap-4">
           <button
             onClick={handlePrev}
-            className="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-md"
+            className="bg-[#D08700] hover:bg-[#D08700] text-white p-3 rounded-full shadow-md"
             aria-label="Previous"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={handleNext}
-            className="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-full shadow-md"
+            className="bg-[#D08700] hover:bg-[#D08700] text-white p-3 rounded-full shadow-md"
             aria-label="Next"
           >
             <ChevronRight size={20} />
