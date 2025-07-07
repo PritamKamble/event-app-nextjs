@@ -10,8 +10,8 @@ export default function MyStoryPage() {
   return (
     <section className={poppins.className}>
       <div className="max-w-full mx-auto sm:h-[85vh] px-4 py-10 text-center bg-transparent">
-        <h1 className="text-3xl font-semibold text-[#C59834] mb-6">The Balloon Story</h1>
-        <p className="text-[#745a21] text-lg leading-relaxed">
+        <h1 className="text-3xl font-bold font-serif text-[#0a0805] mb-6">The Balloon Story</h1>
+        <p className="text-[#745a21]  text-lg leading-relaxed">
           Every celebration starts with a spark of joy — and for us, that spark
           has always been balloons. What began as a simple love for colors and
           creativity has now turned into a full-fledged passion for transforming

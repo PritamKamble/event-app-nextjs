@@ -15,7 +15,7 @@ export default function AboutPage() {
       className={`${poppins.className} w-full bg-gradient-to-b from-[#fffdf5] to-[#f0f0f5] py-16`}
     >
       <div className="text-center mb-12">
-        <h3 className="text-3xl md:text-4xl font-semibold text-[#d1b12b] tracking-tight">
+        <h3 className="text-3xl md:text-4xl font-semibold font-serif text-[#41360d] tracking-tight">
           About Us
         </h3>
         <p className="text-light md:text-lg text-gray-500 mt-2">
@@ -57,7 +57,7 @@ export default function AboutPage() {
         {/* Right: Content */}
         <div className="flex flex-col justify-center space-y-6">
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800 leading-snug mb-4">
+            <h2 className="text-2xl font-semibold text-yellow-600 leading-snug mb-4">
               Crafting Special Celebrations Just for You
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed text-justify mb-4">

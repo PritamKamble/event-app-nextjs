@@ -11,13 +11,29 @@ const poppins = Poppins({
 });
 
 export default function ContactUsPage() {
+  const [today, setToday] = useState("");
+
   const [openModel, setOpenModel] = useState(false);
   useEffect(() => {
+    const now = new Date();
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, "0");
+    const dd = String(now.getDate()).padStart(2, "0");
+    setToday(`${yyyy}-${mm}-${dd}`);
+  }, []);
+  useEffect(() => {
+  const alreadyShown = sessionStorage.getItem("popupShown");
+
+  if (!alreadyShown) {
     const timer = setTimeout(() => {
       setOpenModel(true);
+      sessionStorage.setItem("popupShown", "true");
     }, 4000);
+
     return () => clearTimeout(timer);
-  }, []);
+  }
+}, []);
+
   return (
     <>
       {openModel && (
@@ -46,17 +62,16 @@ export default function ContactUsPage() {
                     placeholder="Name"
                     className="border-b w-full p-2 bg-transparent outline-none"
                   />
-                  <input
-                    type="date"
-                    placeholder="Select Date"
-                    onFocus={(e) => (e.target.type = "date")}
-                    onBlur={(e) => {
-                      if (!e.target.value) {
-                        e.target.type = "text";
-                      }
-                    }}
-                    className="border-b w-full p-3 bg-transparent outline-none placeholder:text-gray-600"
-                  />
+                  <div className="flex flex-col">
+                    <label className="text-sm text-gray-500 mb-1">
+                      Select Date
+                    </label>
+                    <input
+                      type="date"
+                      min={today}
+                      className="border-b w-full p-3 bg-transparent outline-none text-gray-700"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -97,7 +112,7 @@ export default function ContactUsPage() {
         </div>
       )}
       <section className={`${poppins.className} bg-[#fdf7f3] py-10 px  `}>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 ">
+        <div className="max-w-7xl mx-auto sm:h-[70vh] grid grid-cols-1 md:grid-cols-2 gap-10 ">
           {/* LEFT SIDE – Contact Form */}
           <form className=" p-6 rounded-md space-y-4">
             <h2 className="text-2xl font-semibold mb-4 text-gray-800">
@@ -109,13 +124,16 @@ export default function ContactUsPage() {
                 placeholder="Name"
                 className="border-b w-full p-2 bg-transparent outline-none"
               />
-              <input
-                type="date"
-                placeholder="Select Date"
-                onFocus={(e) => (e.target.type = "date")}
-                onBlur={(e) => (e.target.type = "text")}
-                className="border-b w-full p-3 bg-transparent outline-none placeholder:text-gray-600"
-              />
+              <div className="flex flex-col">
+                <label className="text-sm text-gray-500 mb-1">
+                  Select Date
+                </label>
+                <input
+                  type="date"
+                  min={today}
+                  className="border-b w-full p-3 bg-transparent outline-none text-gray-700"
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

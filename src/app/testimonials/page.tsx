@@ -6,69 +6,87 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function Testimonialpage() {
   const videos = [
     "/videos/testimonial-v.mp4",
+
     "/videos/testimonial-v2.mp4",
-    "/videos/testimonial-v3.mp4",
     "/videos/testimonial-v.mp4",
+    "/videos/testimonial-v3.mp4",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev - 3 < 0 ? Math.max(videos.length - 3, 0) : prev - 3
+    );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev + 3 >= videos.length ? 0 : prev + 3));
   };
+
+  const currentVideos = videos.slice(currentIndex, currentIndex + 3);
 
   return (
     <div className="px-4 py-10 bg-gray-50">
-      <h1 className="text-3xl font-semibold text-center mb-10 text-[#bd9f28]">
+      <h1 className="text-3xl font-semibold font-serif text-center mb-10 text-[#524513]">
         What Our Customers Say
       </h1>
 
-      {/* ✅ Mobile view: 1 video at a time with navigation */}
-      <div className="block md:hidden text-center">
+      {/* ✅ Mobile: Single video with arrows */}
+      <div className="relative max-w-2xl h-80 mx-auto block md:hidden">
         <video
           src={videos[currentIndex]}
           controls
           autoPlay
           loop
           muted
-          className="rounded-lg shadow-xl w-full max-w-md h-64 object-cover mx-auto"
+          className="rounded-lg shadow-xl w-full h-96  object-fit"
         />
 
-        <div className="mt-4 flex justify-center gap-4">
-          <button
-            onClick={handlePrev}
-            className="bg-[#D08700] hover:bg-[#D08700] text-white p-3 rounded-full shadow-md"
-            aria-label="Previous"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="bg-[#D08700] hover:bg-[#D08700] text-white p-3 rounded-full shadow-md"
-            aria-label="Next"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
+        {/* Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute top-1/2 left-2 -translate-y-1/2 bg-[#D08700] text-white p-2 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute top-1/2 right-2 -translate-y-1/2 bg-[#D08700] text-white p-2 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+        >
+          <ChevronRight size={24} />
+        </button>
       </div>
 
-      {/* ✅ Desktop view: Grid of videos */}
-      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-        {videos.map((src, index) => (
-          <video
-            key={index}
-            src={src}
-            controls
-            autoPlay
-            loop
-            muted
-            className="rounded-lg shadow-xl w-full max-w-md h-64 object-cover"
-          />
-        ))}
+      {/* ✅ Desktop: 3 videos with navigation */}
+      <div className="relative hidden md:block max-w-7xl mx-auto h-1/2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {currentVideos.map((video, index) => (
+            <video
+              key={index}
+              src={video}
+              controls
+              autoPlay
+              loop
+              muted
+              className="rounded-lg shadow-xl w-full h-96 object-fit"
+            />
+          ))}
+        </div>
+
+        {/* Desktop Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute top-1/2 left-0 -translate-y-1/2 bg-[#D08700] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+        >
+          <ChevronLeft size={28} />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute top-1/2 right-0 -translate-y-1/2 bg-[#D08700] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+        >
+          <ChevronRight size={28} />
+        </button>
       </div>
     </div>
   );

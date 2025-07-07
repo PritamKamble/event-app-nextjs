@@ -38,11 +38,11 @@ const AnimatedCounter = ({ end }: { end: number }) => {
 
 export default function HappyCustpage() {
   return (
-    <div className="min-h-screen bg-amber-50 px-4 py-16">
+    <div className="min-h-screen bg-orange-200 px-4 py-16">
       {/* Top Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
         <div className="space-y-5">
-          <h2 className="text-4xl font-semibold text-[#615b45]">
+          <h2 className="text-4xl font-semibold font-serif text-[#3e3412]">
             Why Choose Us?
           </h2>
           <p className="text-gray-700 text-lg">
@@ -76,8 +76,8 @@ export default function HappyCustpage() {
       </div>
 
       {/* Numbers Section */}
-      <div className="text-center mb-10">
-        <h3 className="text-3xl font-light text-amber-900 mb-2">
+      <div className="text-center mb-10 bg" >
+        <h3 className="text-3xl font-semibold text-amber-900 mb-2">
           Numbers That Speak for Themselves
         </h3>
         <p className="text-gray-700 max-w-2xl mx-auto">

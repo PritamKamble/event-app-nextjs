@@ -51,7 +51,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 text-sm font-bold text-amber-700 sm:text-base">
+        <nav className="hidden md:flex space-x-6 text-sm font-bold  text-amber-700 sm:text-base">
           {navItems.map((item) => {
             const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (

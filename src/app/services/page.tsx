@@ -208,7 +208,7 @@ export default function Servicepage() {
 
   return (
     <div className="max-w-7xl mx-auto  px-4 py-12 bg-[#fdf9f2]  ">
-      <h1 className="text-3xl font-semibold text-center text-[#d1b12b] mb-7 ">
+      <h1 className="text-3xl font-semibold font-serif text-center text-[#3b310b] mb-7 ">
         Comprehensive Event Services
       </h1>
       <EventCategoryCard services={visibleServices} />

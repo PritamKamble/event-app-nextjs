@@ -16,17 +16,22 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-5 text-blue-400">Quick Links</h3>
           <ul className="space-y-3">
-            {["Home", "Services", "About", "Gallery", "Review", "Contact"].map((item) => (
-              <li key={item} className="flex items-center gap-3 group">
-                <ArrowRight size={18} className="text-blue-500 group-hover:translate-x-1 transition-transform" />
-                <Link
-                  href={`/${item.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
+            {[ "Services", "About", "Gallery",  "Contact"].map(
+              (item) => (
+                <li key={item} className="flex items-center gap-3 group">
+                  <ArrowRight
+                    size={18}
+                    className="text-blue-500 group-hover:translate-x-1 transition-transform"
+                  />
+                  <Link
+                    href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
         </div>
 
@@ -53,10 +58,16 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold mb-5 text-blue-400">Follow Us</h3>
           <div className="flex gap-4">
-            <Link href="#" className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors">
+            <Link
+              href="#"
+              className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors"
+            >
               <Facebook size={20} className="text-white" />
             </Link>
-            <Link href="#" className="bg-pink-600 hover:bg-pink-700 p-2 rounded-full transition-colors">
+            <Link
+              href="#"
+              className="bg-pink-600 hover:bg-pink-700 p-2 rounded-full transition-colors"
+            >
               <Instagram size={20} className="text-white" />
             </Link>
           </div>
