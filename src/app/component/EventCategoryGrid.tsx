@@ -106,7 +106,7 @@ export default function EventCategoryCard({
               transition={{ duration: 0.6, delay: index * 0.12 }}
               viewport={{ once: true }}
               tabIndex={0}
-              className="group relative cursor-pointer bg-transparent backdrop-blur-xl hover:bg-white focus:bg-white transition-all duration-300 p-6 sm:p-8 flex flex-col items-center gap-4 overflow-hidden focus:outline-none border-b-2 border-b-fuchsia-300 text-center"
+              className="group relative cursor-pointer bg-transparent backdrop-blur-xl hover:bg-white focus:bg-white transition-all duration-300 p-6 sm:p-8 flex flex-col items-center gap-4 overflow-hidden focus:outline-none border-b-2 border-b-fuchsia-300 text-center w-full h-[300px] max-w-[280px] mx-auto"
             >
               {/* Border animation */}
               <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-purple-500 transition-all duration-500 group-hover:w-full group-focus:w-full" />
