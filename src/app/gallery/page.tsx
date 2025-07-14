@@ -41,6 +41,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const galleryItems = [
   { type: "image", src: "/gallery/haldihero.png" },
@@ -55,70 +56,86 @@ export default function GalleryPage() {
   const [modalItem, setModalItem] = useState<null | { type: string; src: string }>(null);
 
   return (
-    <div className="min-h-screen px-4 py-12 bg-gradient-to-b from-pink-50 to-amber-50">
-      <h1 className="text-4xl font-bold text-center mb-12 text-pink-900 font-serif">
-        Moments We Made Special 💖
+    <div className="min-h-screen px-4 py-16 bg-gradient-to-tr from-[#fef6f6] via-[#fff3ec] to-[#f4f8ff]">
+      <h1 className="text-4xl font text-center mb-14 text-[#4fcbdc] font-serif tracking-tight">
+        Our Magical Moments
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {/* Gallery Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {galleryItems.map((item, index) => (
           <div
             key={index}
-            className="relative group rounded-xl overflow-hidden shadow-xl border border-amber-300 cursor-pointer hover:scale-105 transition-transform"
             onClick={() => setModalItem(item)}
+            className="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-xl border border-gray-200 hover:scale-[1.03] transition duration-300 cursor-pointer bg-white"
           >
             {item.type === "image" ? (
               <Image
                 src={item.src}
-                alt={`Gallery Image ${index + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-56 object-cover"
+                alt={`Gallery ${index + 1}`}
+                width={500}
+                height={400}
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
               />
             ) : (
               <video
                 muted
-                loop
                 autoPlay
-                className="w-full h-56 object-cover"
+                loop
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               >
                 <source src={item.src} type="video/mp4" />
               </video>
             )}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all" />
           </div>
         ))}
       </div>
 
-      {/* Modal Preview */}
-      {modalItem && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4">
-          <div className="relative max-w-3xl w-full max-h-[90vh] bg-white rounded-lg shadow-xl overflow-hidden p-4">
-            <button
-              onClick={() => setModalItem(null)}
-              className="absolute top-3 right-3 text-gray-600 hover:text-red-500"
+      {/* Modal */}
+      <AnimatePresence>
+        {modalItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-4xl w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden p-4"
             >
-              <X size={28} />
-            </button>
-            {modalItem.type === "image" ? (
-              <Image
-                src={modalItem.src}
-                alt="Gallery Preview"
-                width={800}
-                height={600}
-                className="w-full h-auto rounded-lg object-contain"
-              />
-            ) : (
-              <video
-                src={modalItem.src}
-                controls
-                autoPlay
-                className="w-full max-h-[80vh] rounded-lg"
-              />
-            )}
-          </div>
-        </div>
-      )}
+              {/* Close Button */}
+              <button
+                onClick={() => setModalItem(null)}
+                className="absolute top-3 right-3 text-gray-700 hover:text-red-500 z-50"
+              >
+                <X size={28} />
+              </button>
+
+              {/* Preview */}
+              {modalItem.type === "image" ? (
+                <Image
+                  src={modalItem.src}
+                  alt="Preview"
+                  width={1000}
+                  height={700}
+                  className="w-full max-h-[80vh] object-contain rounded-xl"
+                />
+              ) : (
+                <video
+                  src={modalItem.src}
+                  controls
+                  autoPlay
+                  className="w-full max-h-[80vh] rounded-xl"
+                />
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

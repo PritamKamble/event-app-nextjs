@@ -207,22 +207,29 @@ export default function Servicepage() {
   const visibleServices = showAll ? services : services.slice(0, 8);
 
   return (
-    <div className="max-w-7xl mx-auto  px-4 py-12 bg-[#fdf9f2]  ">
-      <h1 className="text-3xl font-semibold font-serif text-center text-[#3b310b] mb-7 ">
-        Comprehensive Event Services
-      </h1>
-      <EventCategoryCard services={visibleServices} />
-      {/* Show View More only if more than 8 items exist */}
-      {services.length > 8 && (
-        <div className="text-center mt-8">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="px-6 py-2 bg-[#d1b12b] text-white rounded-md shadow-md hover:bg-yellow-600 transition"
-          >
-            {showAll ? "View Less" : "View More"}
-          </button>
-        </div>
-      )}
-    </div>
+    <section className="bg-white py-10 px-2 ">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl text-center sm:text-3xl font-serif font text text-[#51A4A8] mb-7 tracking-tight">
+         — Our Event Services
+        </h2>
+        <p className=" text-gray-700 text-2xl max-w-2xl text-center  font-serif mx-auto mb-12">
+          Whether it’s a birthday, wedding, baby shower, or corporate event, we
+          create unforgettable experiences tailored to your vision.
+        </p>
+        <EventCategoryCard services={visibleServices} />
+
+        {/* Toggle Button */}
+        {services.length > 8 && (
+          <div className="text-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="inline-block px-6 py-3 bg-sky-100 text-sky-800 font-medium rounded-full hover:scale-105 transition-all duration-300"
+            >
+              {showAll ? "View Less" : "View More"}
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

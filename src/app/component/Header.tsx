@@ -12,15 +12,13 @@ const Header = () => {
 
   const navItems = ["Home", "Services", "About", "Gallery", "Contact"];
 
-  // Safe dot generation only on client
-
   useEffect(() => {
     setIsClient(true);
 
     const newDots = [...Array(25)].map((_, i) => (
       <div
         key={i}
-        className="absolute w-[8px] h-[8px] bg-yellow-300 rounded-full opacity-40 animate-float"
+        className="absolute w-[8px] h-[8px] bg-amber-50 rounded-full opacity-40 animate-float"
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
@@ -31,47 +29,60 @@ const Header = () => {
     ));
     setDots(newDots);
   }, []);
-  return (
-    <header className="bg-transparent text-black top-0 z-50 w-full  bg-gradient-to-r from-[#fff] via-[#f7f4e4] to-[#ecdf99] overflow-hidden">
-      {/* Floating dots */}
-      {isClient && (
-        <div className="absolute inset-0 z-0 pointer-events-none">{dots}</div>
-      )}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="flex items-center ml-2.5">
+  return (
+    <header className="bg-[#1f2937] text-black top-0 z-50 w-full  overflow-hidden">
+      {/* Floating dots - optional */}
+      {/* {isClient && <div className="absolute inset-0 z-0 pointer-events-none">{dots}</div>} */}
+
+      {/* Desktop Header */}
+      <div className="hidden md:flex items-center justify-between px-10 py-4 max-w-7xl mx-auto">
+        {/* Left: Logo */}
+        <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/logo/The-Balloon-Story.png"
-            alt="logo"
+            src="/logo/The-Balloon-Story-logo.png"
+            alt="The Balloon Story"
             width={60}
             height={60}
-            className="dark:invert transition-transform duration-300 hover:scale-125"
+            className="transition-transform duration-300 hover:scale-110"
           />
+          <span className="text-2xl font-bold font-serif  tracking-tight text-[#fcfaf9]">
+            The Balloon Story
+          </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-6 text-sm font-bold  text-amber-700 sm:text-base">
+        {/* Right: Navigation */}
+        <nav className="flex gap-8 text-base font-medium text-gray-50">
           {navItems.map((item) => {
             const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <Link
                 key={item}
                 href={path}
-                className="hover:text-gray-800 transition"
+                className="hover:text-[#a855f7] hover:underline underline-offset-4 transition-all"
               >
                 {item}
               </Link>
             );
           })}
         </nav>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open Menu"
-        >
+      {/* Mobile Header */}
+      <div className="md:hidden px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo/The-Balloon-Story-logo.png"
+            alt="logo"
+            width={50}
+            height={50}
+            className="transition-transform duration-300 hover:scale-110"
+          />
+        </Link>
+
+        {/* Menu Button */}
+        <button onClick={() => setMenuOpen(true)} aria-label="Open Menu">
           <Menu size={24} />
         </button>
       </div>
@@ -84,14 +95,14 @@ const Header = () => {
         />
       )}
 
-      {/* Sidebar */}
+      {/* Mobile Sidebar Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-amber-50 z-50 shadow-lg transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="p-4 flex flex-col space-y-4 h-full">
-          {/* Close button */}
+          {/* Close Button */}
           <button
             className="self-end mb-2"
             onClick={() => setMenuOpen(false)}
@@ -100,13 +111,13 @@ const Header = () => {
             <X size={24} />
           </button>
 
-          {/* Nav links */}
+          {/* Nav Links */}
           {navItems.map((item) => {
-            const path1 = item === "Home" ? "/" : `/${item.toLowerCase()}`;
+            const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
             return (
               <Link
                 key={item}
-                href={path1}
+                href={path}
                 className="block text-base text-gray-800 hover:text-amber-900 transition"
                 onClick={() => setMenuOpen(false)}
               >

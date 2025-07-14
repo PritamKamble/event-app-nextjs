@@ -5,7 +5,8 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import ContactUsPage from "@/app/contact/page";
-import { FaStar } from "react-icons/fa";
+import { motion } from "framer-motion";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -59,7 +60,6 @@ const services = [
     image: "/images/events/proposal.jpg",
     features: ["Rose Petal Aisle", "Love Balloons", "Marry Me LED"],
   },
-  // Add other services as needed
 ];
 
 export default function EventDetailPage() {
@@ -68,54 +68,83 @@ export default function EventDetailPage() {
 
   if (!event) {
     return (
-      <div className="text-center text-red-500 py-20">Event not found 🚫</div>
+      <div className="text-center text-red-500 py-20 text-xl font-semibold">
+        🚫 Event not found
+      </div>
     );
   }
 
   return (
-    <section className={`${poppins.className}`}>
-      {/* Title Section with Custom Background */}
-      <div className="relative w-full h-[150px] md:h-[200px]">
+  <section className={`${poppins.className}`}>
+  {/* Hero Section */}
+  <div className="relative w-full h-[240px] md:h-[200px]">
+    <Image
+      src="/slide/design_05.jpg"
+      alt="Hero Background"
+      fill
+      className="object-cover brightness-[0.4]"
+    />
+    <div className="absolute inset-0 flex items-center justify-center">
+      <h1 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg font-serif">
+        {event.title}
+      </h1>
+    </div>
+  </div>
+
+  {/* Detail Section - Text Left, Image Right */}
+  <div className="bg-[linear-gradient(130deg,#fffaf3,#fdf0d1,#ffffff)] py-20 px-4 sm:px-6">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Left: Text */}
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="bg-white/80 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-xl"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold text-[#3b310b] mb-6">
+          What’s Included
+        </h2>
+        <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+          {event.description}
+        </p>
+        <ul className="space-y-4 text-[#6b4e09] font-medium text-base sm:text-lg">
+          {event.features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-2">
+              <span className="mt-1 text-amber-500">✓</span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
+      {/* Right: Image */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="overflow-hidden rounded-3xl shadow-2xl"
+      >
         <Image
-          src="/slide/design_05.jpg"
-          alt="Background"
-          fill
-          className="object-cover brightness-[0.5]"
-          priority
+          src={event.image}
+          alt={event.title}
+          width={600}
+          height={400}
+          className="w-full h-[300px] sm:h-[420px] object-cover hover:scale-[1.03] transition-transform duration-700 ease-in-out"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-orange-600 px-4">
-          <h1 className="text-3xl md:text-5xl font-bold mb-3">{event.title}</h1>
-        </div>
-      </div>
+      </motion.div>
+    </div>
+  </div>
 
-      {/* Event Detail Section */}
-      <div className="max-w-7xl mx-auto px-2 py-11">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16 px-4">
-          <div>
-            <h2 className="text-2xl font-semibold text-amber-950 mb-6">
-              What's Included
-            </h2>
-            <p className="text-lg max-w-2xl mb-5">{event.description}</p>
+  {/* Contact Section */}
+  <div className="bg-white py-16 px-4 md:px-6">
+    <h3 className="text-3xl font-bold text-center text-[#3b310b] mb-10">
+      Ready to Book?
+    </h3>
+    <ContactUsPage />
+  </div>
+</section>
 
-            <ul className="list-disc list-inside text-[#bd9f28] space-y-2 text-lg">
-              {event.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="">
-            <Image
-              src={event.image}
-              alt={event.title}
-              width={600}
-              height={400}
-              className=" h-[300px] sm:h-[410px] object-fit transition duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110 group-hover:rotate-[1deg]"
-            />
-          </div>
-        </div>
-
-        <ContactUsPage />
-      </div>
-    </section>
   );
 }

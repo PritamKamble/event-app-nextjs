@@ -27,8 +27,8 @@ export default function Testimonialpage() {
   const currentVideos = videos.slice(currentIndex, currentIndex + 3);
 
   return (
-    <div className="px-4 py-10 bg-gray-50">
-      <h1 className="text-3xl font-semibold font-serif text-center mb-10 text-[#524513]">
+    <div className="px-4 py-10 bg-white">
+      <h1 className="text-3xl font-semibold font-serif text-center mb-10 text-[#51A4A8]">
         What Our Customers Say
       </h1>
 
@@ -77,13 +77,13 @@ export default function Testimonialpage() {
         {/* Desktop Arrows */}
         <button
           onClick={handlePrev}
-          className="absolute top-1/2 left-0 -translate-y-1/2 bg-[#D08700] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+          className="absolute top-1/2 left-0 -translate-y-1/2 bg-[#9ac4cf] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
         >
           <ChevronLeft size={28} />
         </button>
         <button
           onClick={handleNext}
-          className="absolute top-1/2 right-0 -translate-y-1/2 bg-[#D08700] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
+          className="absolute top-1/2 right-0 -translate-y-1/2 bg-[#9ac4cf] text-white p-3 rounded-full shadow-md hover:bg-[#bd7c00] transition"
         >
           <ChevronRight size={28} />
         </button>
